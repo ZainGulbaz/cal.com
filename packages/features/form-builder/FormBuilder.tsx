@@ -553,7 +553,9 @@ function FieldLabel({ field }: { field: RhfFormField }) {
     );
   }
   const label =
-    variantsConfigVariants?.[variant as keyof typeof fieldTypeConfigVariants]?.fields?.[0]?.label || "";
+    variantsConfigVariants?.[variant as keyof typeof fieldTypeConfigVariants]?.fields
+      ?.map((field) => field.label)
+      ?.join(",") || "";
   return <span>{t(label)}</span>;
 }
 
